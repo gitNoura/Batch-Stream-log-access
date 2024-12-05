@@ -288,35 +288,28 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
 
 ### Send Traffic Using JMeter
 Use the configured JMeter test plan to simulate HTTP requests to Nginx. Ensure the requests are distributed across endpoints as specified:
-
-    ```bash
-    ./bin/jmeter
-
+```bash
+./bin/jmeter
+```
 ### Consume Logs from the Kafka Topic
+
 Start a Kafka consumer to verify that logs are being received on the `RAWLOG` topic:
 
-    ```bash
-    bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --from-beginning
+```bash
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --from-beginning
+```
+### Validate Log Format
 
-Validate Log Format: The logs streamed from Nginx should appear in the console output. Verify that the logs are formatted correctly as per the Nginx json_logs format:
+The logs streamed from Nginx should appear in the console output. Verify that the logs are formatted correctly as per the Nginx `json_logs` format:
 
+```json
 {
-"time_local": "26/Nov/2024:15:42:01 +0000",
-"remote_addr": "192.168.1.1",
-"request": "GET /product1 HTTP/1.1",
+    "time_local": "26/Nov/2024:15:42:01 +0000",
+    "remote_addr": "192.168.1.1",
+    "request": "GET /product1 HTTP/1.1",
     "status": "200",
     "body_bytes_sent": "512",
     "http_referer": "-",
     "http_user_agent": "Mozilla/5.0"
 }
-3. Troubleshooting
-Filebeat Issues:
 
-Check the Filebeat logs for errors:
-sudo journalctl -u filebeat
-Kafka Connectivity:
-
-Ensure Kafka brokers are running and reachable on their configured ports.
-Log Validation:
-
-Ensure Nginx logs are generated correctly in /var/log/nginx/access.log.
