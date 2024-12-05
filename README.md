@@ -284,19 +284,26 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       sudo systemctl start filebeat
       sudo systemctl status filebeat
     
-### 2. Verify Log Streaming to Kafka
-Send Traffic Using JMeter: Use the configured JMeter test plan to simulate HTTP requests to Nginx. Ensure the requests are distributed across endpoints as specified:
+## 2. Verify Log Streaming to Kafka
 
-./bin/jmeter
-Consume Logs from the Kafka Topic: Start a Kafka consumer to verify that logs are being received on the RAWLOG topic:
+### Send Traffic Using JMeter
+Use the configured JMeter test plan to simulate HTTP requests to Nginx. Ensure the requests are distributed across endpoints as specified:
 
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --from-beginning
+    ```bash
+    ./bin/jmeter
+
+### Consume Logs from the Kafka Topic
+Start a Kafka consumer to verify that logs are being received on the `RAWLOG` topic:
+
+    ```bash
+    bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --from-beginning
+
 Validate Log Format: The logs streamed from Nginx should appear in the console output. Verify that the logs are formatted correctly as per the Nginx json_logs format:
 
 {
-    "time_local": "26/Nov/2024:15:42:01 +0000",
-    "remote_addr": "192.168.1.1",
-    "request": "GET /product1 HTTP/1.1",
+"time_local": "26/Nov/2024:15:42:01 +0000",
+"remote_addr": "192.168.1.1",
+"request": "GET /product1 HTTP/1.1",
     "status": "200",
     "body_bytes_sent": "512",
     "http_referer": "-",
