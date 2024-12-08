@@ -425,7 +425,10 @@ This step involves writing the processed results from the **Kafka Streams** appl
 
 ## **1. Activate the Python Environment**
 Ensure that the Python virtual environment used for Kafka and Cassandra integration is activated:
-
+   - Create a Python Virtual Environment:
+     ```bash
+     python -m venv kafka-env
+     ```
 1. Navigate to the project directory and activate the virtual environment:
    ```bash
    cd
