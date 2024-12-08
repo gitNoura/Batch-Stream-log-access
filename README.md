@@ -426,7 +426,7 @@ During the initialization process, you will be prompted to select options:
 ![WhatsApp Image 2024-12-08 at 14 59 49_a4f8cb95](https://github.com/user-attachments/assets/27371e27-1d25-42cb-82d3-720839e84e83)
 
 
-## 7. Real-Time Writing Results to Cassandra
+## 7. Real-Time Writing Results to Cassandra (STREAM PROCESSING)
 
 This step involves writing the processed results from the **Kafka Streams** application to the Cassandra database in real-time. A Python script is used to insert the data into the Cassandra `RESULTS` table.
 
@@ -452,14 +452,88 @@ Ensure that the Python virtual environment used for Kafka and Cassandra integrat
    ```bash
    SELECT * FROM logspace.RESULTS;
    ```
+![WhatsApp Image 2024-12-08 at 15 48 54_1093bd66](https://github.com/user-attachments/assets/b5f713ce-1190-475d-9ea4-7e575467776f)
 
+## 8. Batch Processing and Scheduling with Cron
 
+This step involves configuring a **consumer pool in fan-out mode** to process logs in real-time and execute a **batch process** that analyzes the logs stored in the Cassandra `LOG` table. The batch program identifies the **N most visited pages** for the day and writes the results into the Cassandra `RESULTS` table. The batch process is scheduled to run daily at 8 PM using `cron`.
+
+---
+
+### **1. Configure a Consumer Pool in Fan-Out Mode**
+
+To enable a fan-out architecture:
+1. Start two Kafka consumers in **different consumer groups**:
+   - **Consumer 1** writes raw logs to the Cassandra `LOG` table.
+   - **Consumer 2** handles other real-time tasks or additional processing.
+
+    - Start Consumer 1:
+      ```bash
+      bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --group consumer-group-1
+      ```
+    - Start Consumer 2:
+      ```bash
+      bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --group consumer-group-2
+      ```
+Each consumer group processes the same messages independently, achieving fan-out.
+
+---
+
+2. Batch Processing Program
+A Python script, batch_process_logs.py, processes the Cassandra LOG table and writes results to the RESULTS table.
+
+  - Navigate to the project directory and run the script:
+    ```bash
+    cd /home/q/kafka-cassandra-integration
+    python batch_process_logs.py
+    ```
+  - Query Cassandra to validate results (in cqlsh):
+    ```bash
+    SELECT * FROM logspace.LOG;
+    SELECT * FROM logspace.RESULTS;
+    ```
+    
+3. Schedule the Batch Process Using Cron
+To schedule the batch program to run daily at 8 PM:
+
+  - Start and Enable Cron Service:
+   ```bash
+    sudo systemctl start cron
+    sudo systemctl enable cron
+    systemctl status cron
+   ```
+  - Edit the Crontab File: Open the crontab editor:
+    ```bash
+    crontab -e
+    ```
+  - Add the Scheduled Task: Add the following line to schedule the batch process:
+    ```bash
+    0 20 * * * /usr/bin/python3 /home/q/kafka-cassandra-integration/batch_process_logs.py >> /home/q/kafka-cassandra-integration/batch_process_logs.log 2>&1
+    ```
+Explanation:
+   - 0 20 * * *: Runs the task daily at 8:00 PM.
+   - /usr/bin/python3: Full path to the Python 3 executable.
+   - /home/q/kafka-cassandra-integration/batch_process_logs.py: Full path to the script.
+   - '>> /home/q/kafka-cassandra-integration/batch_process_logs.log': Redirects the output and errors to a log file for debugging.
+  - Save and Exit: Save the crontab file and exit. The batch process will now run daily at the scheduled time.
+    
+4. Validation
+After the scheduled time or manual execution, verify the results:
+
+ - Check the LOG table in Cassandra:
+   ```bash
+   SELECT * FROM logspace.LOG;
+   ```
+ - Check the RESULTS table for batch processing results:
+   ```bash
+   SELECT * FROM logspace.RESULTS;
+   ```
 📝 Notes:
 - Ensure Cassandra is running before interacting with cqlsh.
 - Use the above commands for initializing and verifying Cassandra in this project.
 - Modify configurations or paths according to your system setup.
-+ creation of log and result table
-+ executing the stream processing pythom file to cassandra through the result table
-+ and the batch one show the log table
+
+
++ and the batch one show the log table (cronie for sync)
 + finally the test thing (include the python files used)
 + the rest of screenshots
