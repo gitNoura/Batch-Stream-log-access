@@ -247,7 +247,7 @@ To set up multiple brokers in the Kafka cluster, follow these steps:
 ![WhatsApp Image 2024-12-08 at 03 04 57_6cf1f125](https://github.com/user-attachments/assets/5a7a98b8-7f27-487f-a948-b6b2a4dece07)
 --- 
 
-## 7. Configure Streaming of Logs to Kafka (`RAWLOG` Topic)
+## 4. Configure Streaming of Logs to Kafka (`RAWLOG` Topic)
 
 To enable streaming of Nginx logs to the Kafka topic `RAWLOG`, we integrated Nginx and Kafka using **Filebeat**. This section details the configuration and verification process.
 
@@ -289,21 +289,8 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
     ```bash
       sudo systemctl start filebeat
       sudo systemctl status filebeat
-    
-## 2. Verify Log Streaming to Kafka
+https://github.com/user-attachments/assets/5164f57c-2f9a-4db1-8fca-943519640646)    
 
-### Send Traffic Using JMeter
-Use the configured JMeter test plan to simulate HTTP requests to Nginx. Ensure the requests are distributed across endpoints as specified:
-```bash
-./bin/jmeter
-```
-### Consume Logs from the Kafka Topic
-
-Start a Kafka consumer to verify that logs are being received on the `RAWLOG` topic:
-
-```bash
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --from-beginning
-```
 ### Validate Log Format
 
 The logs streamed from Nginx should appear in the console output. Verify that the logs are formatted correctly as per the Nginx `json_logs` format:
