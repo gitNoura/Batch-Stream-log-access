@@ -528,12 +528,9 @@ After the scheduled time or manual execution, verify the results:
    ```bash
    SELECT * FROM logspace.RESULTS;
    ```
-📝 Notes:
-- Ensure Cassandra is running before interacting with cqlsh.
-- Use the above commands for initializing and verifying Cassandra in this project.
-- Modify configurations or paths according to your system setup.
+
 
 
 + and the batch one show the log table (cronie for sync)
 + finally the test thing (include the python files used)
-+ the rest of screenshots
++ the rest of screenshots + organize the files and add the scripts
