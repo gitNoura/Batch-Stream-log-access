@@ -338,4 +338,8 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       cqlsh
       ```
 
-
++ creation of log and result table
++ executing the stream processing pythom file to cassandra through the result table
++ and the batch one show the log table
++ finally the test thing (include the python files used)
++ the rest of screenshots
