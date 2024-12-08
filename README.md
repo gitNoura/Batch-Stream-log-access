@@ -90,6 +90,7 @@ We have provided the necessary configuration files for the Nginx load balancer a
 <div align="center">
   <img src="https://github.com/user-attachments/assets/f18b3ca7-6126-4a50-b4af-08820ef620e1" alt="Image Description">
 </div>
+
 ---
 
 ## 2. JMeter Installation and Configuration
@@ -246,18 +247,16 @@ To set up multiple brokers in the Kafka cluster, follow these steps:
 **Consume Messages:**
 - Start a Kafka consumer to verify logs are being received on the RAWLOG topic (Fan-Out Mode):
   ```bash
-    bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --group group1 --from-beginning
-    bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --group group2 --from-beginning
+    bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --group group1 --from-beginning
+    bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic RAWLOG --group group2 --from-beginning
 
 
 ![WhatsApp Image 2024-12-08 at 03 04 57_6cf1f125](https://github.com/user-attachments/assets/5a7a98b8-7f27-487f-a948-b6b2a4dece07)
 --- 
 
-## 4. Configure Streaming of Logs to Kafka (`RAWLOG` Topic)
+## 4. Configure Streaming of Logs to Kafka (`RAWLOG` Topic) -Filebeat-
 
 To enable streaming of Nginx logs to the Kafka topic `RAWLOG`, we integrated Nginx and Kafka using **Filebeat**. This section details the configuration and verification process.
-
----
 
 ### 1. Install and Configure Filebeat
 Filebeat is used to ship Nginx logs to the Kafka broker.
@@ -297,7 +296,7 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       sudo systemctl status filebeat
 
 ![WhatsApp Image 2024-12-08 at 03 08 52_f4b3373b](https://github.com/user-attachments/assets/5ee78974-4c48-4370-8464-9e9237c56015)  
-
+## 5. Cassandra
 ### Installation Steps
 1. **Download and Install Apache Cassandra**:
    - Visit the official [Cassandra Download Page](https://cassandra.apache.org/download/) to get the latest version.
