@@ -561,13 +561,10 @@ The project includes the following Python scripts:
    ```bash
    python main.py
    ```
-   image
+![WhatsApp Image 2024-12-08 at 15 15 08_927a542b](https://github.com/user-attachments/assets/2f052b89-87af-4878-932b-8c635254731d)
 
 3. **Simulate HTTP Requests: Use the request_simulator.py script to generate HTTP requests to the Nginx load balancer**:
    ```bash
    python request_simulator.py
    ```
-
-image   
-
-+ the rest of screenshots + organize the files and add the scripts
+![WhatsApp Image 2024-12-08 at 15 12 47_a8cc02ad](https://github.com/user-attachments/assets/af66c845-2875-46b0-b655-2c776a5e388e)
