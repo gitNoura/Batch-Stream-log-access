@@ -289,20 +289,8 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
     ```bash
       sudo systemctl start filebeat
       sudo systemctl status filebeat
-https://github.com/user-attachments/assets/5164f57c-2f9a-4db1-8fca-943519640646)    
 
-### Validate Log Format
+![WhatsApp Image 2024-12-08 at 03 08 52_f4b3373b](https://github.com/user-attachments/assets/5ee78974-4c48-4370-8464-9e9237c56015)  
 
-The logs streamed from Nginx should appear in the console output. Verify that the logs are formatted correctly as per the Nginx `json_logs` format:
 
-```json
-{
-    "time_local": "26/Nov/2024:15:42:01 +0000",
-    "remote_addr": "192.168.1.1",
-    "request": "GET /product1 HTTP/1.1",
-    "status": "200",
-    "body_bytes_sent": "512",
-    "http_referer": "-",
-    "http_user_agent": "Mozilla/5.0"
-}
 
