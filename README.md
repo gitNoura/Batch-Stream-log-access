@@ -1,5 +1,5 @@
 # Real-time and Batch Access Log Processing Pipeline
-
+![image](https://github.com/user-attachments/assets/eadf39d5-9cac-4b5d-b973-09b6ef09f665)
 ## 📖 Project Overview
 This project implements a scalable pipeline for processing web server access logs in both **real-time** and **batch** modes. The system identifies the **N most visited web pages** every **P minutes** and generates daily reports of the most accessed pages. The architecture includes Kafka, Cassandra, Filebeat, and Nginx, and the project was implemented on **Arch Linux** but can be adapted to other Linux distributions or operating systems.
 
