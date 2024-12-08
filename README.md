@@ -530,8 +530,31 @@ After the scheduled time or manual execution, verify the results:
    ```
 ![WhatsApp Image 2024-12-08 at 16 27 11_d9a677d8](https://github.com/user-attachments/assets/a53f4629-9b0e-4f76-b73f-bad0278e841a)
 
+## 9. Final Step: Testing the Pipeline Using Python Scripts
+
+Instead of using JMeter for testing, we implemented custom **Python scripts** to replace JMeter for generating requests, simulating traffic, and validating the pipeline functionality.
+
+---
+
+### **1. Python Scripts Overview**
+
+The project includes the following Python scripts:
+
+- **`request_simulator.py`**: Simulates HTTP requests to the Nginx load balancer.
+- **`performance_metrics.py`**: Collects and displays performance metrics for analysis.
+- **`main.py`**: Consumes messages from the Kafka topic `RAWLOG`.
+- **`kafka_consumer.py`**: Configures and runs a Kafka consumer for fan-out behavior.
+- **`batch_processing.py`**: Processes logs from the Cassandra `LOG` table and writes results to the `RESULTS` table.
+- **`async_requests.py`**: Sends asynchronous HTTP requests to simulate real-time traffic.
+
+---
+
+### **2. Testing Procedure**
+
+1. **Navigate to the Project Directory**:
+   ```bash
+   cd /opt/project
 
 
-+ and the batch one show the log table (cronie for sync)
-+ finally the test thing (include the python files used)
+
 + the rest of screenshots + organize the files and add the scripts
