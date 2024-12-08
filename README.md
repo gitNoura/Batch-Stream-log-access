@@ -33,7 +33,7 @@ The implementation was tested on **Arch Linux**, but any Linux distribution or o
 - Install **Nginx**:
   ```bash
   sudo pacman -S nginx
-## 2. Configuration Files
+#### Configuration Files
 
 We have provided the necessary configuration files for the Nginx load balancer and backend servers. Download them directly from this repository:
 
@@ -43,7 +43,7 @@ We have provided the necessary configuration files for the Nginx load balancer a
 
 ---
 
-## 3. Apply the Configuration
+#### Apply the Configuration
 
 1. **Place Configuration Files**:
    - Move the `nginx.conf` file to the default Nginx configuration directory:
@@ -65,7 +65,7 @@ We have provided the necessary configuration files for the Nginx load balancer a
 
 ---
 
-## 4. Verify Load Balancer
+#### Verify Load Balancer
 
 1. **Test the Configuration**:
    - Check if the Nginx configuration is valid:
@@ -86,9 +86,9 @@ We have provided the necessary configuration files for the Nginx load balancer a
 
 ---
 
-## 5. JMeter Installation and Configuration
+## 2. JMeter Installation and Configuration
 
-### Installation
+#### Installation
 1. **Download JMeter**:
    - Visit the official Apache JMeter website: [https://jmeter.apache.org/](https://jmeter.apache.org/).
    - Download the latest version of JMeter (binary archive).
@@ -111,7 +111,7 @@ We have provided the necessary configuration files for the Nginx load balancer a
 
 ---
 
-### Configuring JMeter for the Project
+#### Configuring JMeter for the Project
 To simulate HTTP requests to the Nginx load balancer, JMeter was configured to distribute traffic to the product endpoints with the following proportions:
 - `/product1`: **50%**
 - `/product2`: **25%**
@@ -119,7 +119,7 @@ To simulate HTTP requests to the Nginx load balancer, JMeter was configured to d
 - `/product4`: **8%**
 - `/product5`: **2%**
 
-#### Steps:
+##### Steps:
 1. **Create a Test Plan**:
    - Open JMeter and create a new Test Plan.
 
@@ -153,21 +153,21 @@ To simulate HTTP requests to the Nginx load balancer, JMeter was configured to d
 
 ---
 
-### Running the Test
+#### Running the Test
 1. Save the Test Plan.
 2. Click the green **Start** button in the JMeter toolbar to run the test.
 3. Monitor the traffic in the configured listeners to ensure the requests are distributed as expected.
 
 ---
 
-### Validation
+#### Validation
 Below is an attached screenshot of the successful JMeter test plan execution, showing the traffic distribution and results:
 
 ![Image](https://github.com/user-attachments/assets/0fef6ecd-058b-4fcf-b1ba-1eb1c9c60d86)
 
 ---
 
-## 6. Kafka Cluster Setup
+## 3. Kafka Cluster Setup
 
 To handle log streaming, we configured a Kafka cluster with multiple brokers. Below are the steps to set up and validate the Kafka cluster.
 
