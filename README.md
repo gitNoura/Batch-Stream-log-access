@@ -163,7 +163,7 @@ To simulate HTTP requests to the Nginx load balancer, JMeter was configured to d
 ### Validation
 Below is an attached screenshot of the successful JMeter test plan execution, showing the traffic distribution and results:
 
-![JMeter Test Execution Screenshot](link-to-your-screenshot.png)
+![JMeter Test Execution Screenshot](/screenshot1.png)
 
 ---
 
