@@ -1,5 +1,8 @@
 # Real-time and Batch Access Log Processing Pipeline
-![image](https://github.com/user-attachments/assets/eadf39d5-9cac-4b5d-b973-09b6ef09f665)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/eadf39d5-9cac-4b5d-b973-09b6ef09f665" alt="Image Description">
+</div>
+
 ## 📖 Project Overview
 This project implements a scalable pipeline for processing web server access logs in both **real-time** and **batch** modes. The system identifies the **N most visited web pages** every **P minutes** and generates daily reports of the most accessed pages. The architecture includes Kafka, Cassandra, Filebeat, and Nginx, and the project was implemented on **Arch Linux** but can be adapted to other Linux distributions or operating systems.
 
@@ -310,7 +313,9 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
    - Use the following command to start Cassandra:
      ```bash
      sudo bin/cassandra -R -f
+     nodotool status #to check the status
      ```
+![WhatsApp Image 2024-12-08 at 03 31 46_1f562641](https://github.com/user-attachments/assets/d542dbb0-96ab-4354-a64e-5d7f24d0530d)
 
      
 
