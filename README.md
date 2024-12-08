@@ -528,6 +528,7 @@ After the scheduled time or manual execution, verify the results:
    ```bash
    SELECT * FROM logspace.RESULTS;
    ```
+![WhatsApp Image 2024-12-08 at 16 27 11_d9a677d8](https://github.com/user-attachments/assets/a53f4629-9b0e-4f76-b73f-bad0278e841a)
 
 
 
