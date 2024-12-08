@@ -83,6 +83,10 @@ We have provided the necessary configuration files for the Nginx load balancer a
      - `/product5`
 
    Ensure the load balancer distributes requests to the appropriate backend servers.
+   
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/1b88f9bd-0a29-4dce-ac5e-94f65ab4d2d2" alt="Image Description">
+</div>
 
 ---
 
