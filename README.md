@@ -292,5 +292,26 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
 
 ![WhatsApp Image 2024-12-08 at 03 08 52_f4b3373b](https://github.com/user-attachments/assets/5ee78974-4c48-4370-8464-9e9237c56015)  
 
+### Installation Steps
+1. **Download and Install Apache Cassandra**:
+   - Visit the official [Cassandra Download Page](https://cassandra.apache.org/download/) to get the latest version.
+   - Extract the downloaded archive:
+     ```bash
+     tar -xvzf apache-cassandra-<version>-bin.tar.gz
+     cd apache-cassandra-<version>
+     ```
+
+2. **Add Cassandra to Your PATH**:
+   - Export Cassandra's `bin` directory to your system's PATH:
+     ```bash
+     export PATH=$PATH:/path/to/apache-cassandra/bin
+     ```
+3. **Start Cassandra**:
+   - Use the following command to start Cassandra:
+     ```bash
+     sudo bin/cassandra -R -f
+     ```
+
+     
 
 
