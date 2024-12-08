@@ -516,7 +516,9 @@ Explanation:
    - /home/q/kafka-cassandra-integration/batch_process_logs.py: Full path to the script.
    - '>> /home/q/kafka-cassandra-integration/batch_process_logs.log': Redirects the output and errors to a log file for debugging.
   - Save and Exit: Save the crontab file and exit. The batch process will now run daily at the scheduled time.
-    
+
+![WhatsApp Image 2024-12-08 at 16 41 55_962ab3bb](https://github.com/user-attachments/assets/e5fd56cc-9519-490e-b000-ed0b524c6a6d)
+
 4. Validation
 After the scheduled time or manual execution, verify the results:
 
