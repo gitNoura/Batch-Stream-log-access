@@ -242,7 +242,9 @@ To set up multiple brokers in the Kafka cluster, follow these steps:
   ```bash
     bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --group group1 --from-beginning
     bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --group group2 --from-beginning
-  
+
+
+![WhatsApp Image 2024-12-08 at 03 04 57_6cf1f125](https://github.com/user-attachments/assets/5a7a98b8-7f27-487f-a948-b6b2a4dece07)
 --- 
 
 ## 7. Configure Streaming of Logs to Kafka (`RAWLOG` Topic)
