@@ -348,6 +348,7 @@ During the initialization process, you will be prompted to select options:
 - 3: The number of top visited pages (N).
 - 5: The interval in minutes (P).
 
+![WhatsApp Image 2024-12-08 at 15 44 44_16e04bd2](https://github.com/user-attachments/assets/3ad73e32-0b19-4bfb-adf4-0479c25fb4ca)
 
 ## 6. Cassandra
 ### Installation Steps
