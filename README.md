@@ -238,9 +238,10 @@ To set up multiple brokers in the Kafka cluster, follow these steps:
 
 ### 4. **Testing the Kafka Cluster**
 **Consume Messages:**
-- Start a Kafka consumer to verify logs are being received on the RAWLOG topic:
+- Start a Kafka consumer to verify logs are being received on the RAWLOG topic (Fan-Out Mode):
   ```bash
-    bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --from-beginning
+    bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --group group1 --from-beginning
+    bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic RAWLOG --group group2 --from-beginning
   
 --- 
 
