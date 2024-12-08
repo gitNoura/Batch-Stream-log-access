@@ -336,6 +336,41 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       ```bash
       cqlsh
       ```
+5. **Create the keyspace logspace**:
+   - Create the keyspace logspace with SimpleStrategy and a replication factor of 1:
+      ```bash
+      CREATE KEYSPACE logspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+      ```
+  - Use the created keyspace:
+      ```bash
+      USE logspace;
+      ```   
+6. **Table Definitions**:
+ - **LOG Table**: This table stores raw log entries from the Nginx servers.
+      ```bash
+      CREATE TABLE LOG (
+          id UUID PRIMARY KEY,
+          timestamp TIMESTAMP,
+          source_ip TEXT,
+          request TEXT,
+          status_code INT,
+          user_agent TEXT,
+          raw_message TEXT
+      );
+      ```   
+  - **RESULTS Table**: This table stores the processed results from both batch and real-time pipelines.
+      ```bash
+      CREATE TABLE RESULTS (
+          id UUID PRIMARY KEY,
+          timestamp TIMESTAMP,
+          batch_or_realtime TEXT,
+          source_ip TEXT,
+          processed_data TEXT,
+          summary JSON
+      );
+      ```   
+
+    
 📝 Notes:
 - Ensure Cassandra is running before interacting with cqlsh.
 - Use the above commands for initializing and verifying Cassandra in this project.
