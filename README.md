@@ -29,7 +29,7 @@ The implementation was tested on **Arch Linux**, but any Linux distribution or o
 
 ## 🚀 Installation and Deployment
 
-## 1. Install Necessary Tools
+## 1. Install Nginx
 - Install **Nginx**:
   ```bash
   sudo pacman -S nginx
