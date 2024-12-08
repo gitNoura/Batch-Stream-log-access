@@ -424,7 +424,36 @@ During the initialization process, you will be prompted to select options:
       );
       ```   
 ![WhatsApp Image 2024-12-08 at 14 59 49_a4f8cb95](https://github.com/user-attachments/assets/27371e27-1d25-42cb-82d3-720839e84e83)
-    
+
+
+## 7. Real-Time Writing Results to Cassandra
+
+This step involves writing the processed results from the **Kafka Streams** application to the Cassandra database in real-time. A Python script is used to insert the data into the Cassandra `RESULTS` table.
+
+## **1. Activate the Python Environment**
+Ensure that the Python virtual environment used for Kafka and Cassandra integration is activated:
+
+1. Navigate to the project directory and activate the virtual environment:
+   ```bash
+   cd
+   pyenv global 3.11.6
+   source kafka-env/bin/activate
+   ```
+2. Execute the script:
+   Run the Python script to write the real-time processing results into the Cassandra RESULTS table:
+   ```bash
+   python write_results_to_cassandra.py
+   ```
+3. Testing the Results
+   ```bash
+   cqlsh
+   ```
+   - Query the RESULTS table to view the inserted data:
+   ```bash
+   SELECT * FROM logspace.RESULTS;
+   ```
+
+
 📝 Notes:
 - Ensure Cassandra is running before interacting with cqlsh.
 - Use the above commands for initializing and verifying Cassandra in this project.
