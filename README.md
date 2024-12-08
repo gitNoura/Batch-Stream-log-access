@@ -556,7 +556,18 @@ The project includes the following Python scripts:
 1. **Navigate to the Project Directory**:
    ```bash
    cd /opt/project
+   ```
+2. **Run the Main Kafka Consumer: Start the Kafka consumer to process messages from the RAWLOG topic**:
+   ```bash
+   python main.py
+   ```
+   image
 
+3. **Simulate HTTP Requests: Use the request_simulator.py script to generate HTTP requests to the Nginx load balancer**:
+   ```bash
+   python request_simulator.py
+   ```
 
+image   
 
 + the rest of screenshots + organize the files and add the scripts
