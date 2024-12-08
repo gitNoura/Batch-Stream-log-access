@@ -1,0 +1,78 @@
+# Load Balancer Configuration
+user http;
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    # Define MIME types and general settings
+    include       mime.types;
+    default_type  application/octet-stream;
+    types_hash_max_size 2048;
+    types_hash_bucket_size 128;
+  
+    log_format json_logs escape=json '{'
+		'"time_local":"$time_local",'
+		'"remote_addr":"$remote_addr",'
+		'"request":"$request",'
+		'"status":"$status",'
+		'"body_bytes_sent":"$body_bytes_sent",'
+		'"http_referer":"$http_referer",'
+		'"http_user_agent":"$http_user_agent"'
+		'}';
+    access_log /var/log/nginx/access.log json_logs;
+	
+    error_log /var/log/nginx/error.log debug;
+
+
+      
+    # Log settings
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log debug;
+
+    # File transfer optimizations
+    sendfile        on;
+    keepalive_timeout  65;
+
+    # Enable compression
+    gzip  on;
+
+    # Define the upstream block for load balancing
+    upstream backend {
+        server 127.0.0.1:8087; # Backend 1 (Product 1 and Product 2)
+        server 127.0.0.1:8088; # Backend 2 (Product 3, Product 4, and Product 5)
+    }
+
+    server {
+        listen 8080;
+        server_name localhost;
+
+        # Handle requests to /productX
+        location / {
+            # Try serving the file locally first, then append .html, then proxy
+            try_files $uri $uri.html @proxy;
+        }
+
+        # Proxy fallback
+        location @proxy {
+            proxy_pass http://backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+
+            # Add a rewrite rule for backend requests without .html
+            rewrite ^/(.*)$ /$1.html break;
+        }
+
+        # Custom error pages
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /usr/share/nginx/html;
+            internal;
+        }
+    }
+
+    }
+
+
