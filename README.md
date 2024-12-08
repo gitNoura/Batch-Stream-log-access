@@ -320,6 +320,22 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
      ```
 ![WhatsApp Image 2024-12-08 at 03 31 46_1f562641](https://github.com/user-attachments/assets/d542dbb0-96ab-4354-a64e-5d7f24d0530d)
 
-     
+4. **Deployement**:
+   - Create a folder call it Kafka-cassandra-integration:
+     ```bash
+     cd /home/q/kafka-cassandra-integration
+     ```
+   - Create a Python Virtual Environment:
+     ```bash
+     python -m venv kafka-env
+     ```
+   - Activate the Python Environment:
+     ```bash
+     source kafka-env/bin/activate
+     ```
+    - Open Cassandra Query Language Shell (CQLSH):
+      ```bash
+      cqlsh
+      ```
 
 
