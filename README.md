@@ -422,7 +422,7 @@ During the initialization process, you will be prompted to select options:
           summary JSON
       );
       ```   
-
+![WhatsApp Image 2024-12-08 at 14 59 49_a4f8cb95](https://github.com/user-attachments/assets/27371e27-1d25-42cb-82d3-720839e84e83)
     
 📝 Notes:
 - Ensure Cassandra is running before interacting with cqlsh.
