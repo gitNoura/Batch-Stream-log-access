@@ -25,6 +25,7 @@ Before starting, ensure the following tools are installed and configured on your
 - **Filebeat**: For log shipping from Nginx to Kafka.
 - **Python**: Version 3.x with `kafka-python` and `cassandra-driver` packages.
 - **Nginx**: Configured as a load balancer and web server.
+- **Cron**: For scheduling batch processes.
   
 The implementation was tested on **Arch Linux**, but any Linux distribution or other operating systems capable of running these tools can be used.
 
