@@ -231,6 +231,9 @@ To set up multiple brokers in the Kafka cluster, follow these steps:
   log.dirs=/tmp/kafka-logs-3
   port=9095
 
+- And don't forget to create the logs:
+![WhatsApp Image 2024-12-08 at 02 53 16_1492d977](https://github.com/user-attachments/assets/20d21793-98e5-4e8a-9f56-1a76303f8ee4)
+
 ### 3. **Creating and Managing Topics**:
   1. **Create the RAWLOG Topic: Create a topic for log streaming:**
      ```bash
