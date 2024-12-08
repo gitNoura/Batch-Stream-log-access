@@ -296,7 +296,60 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       sudo systemctl status filebeat
 
 ![WhatsApp Image 2024-12-08 at 03 08 52_f4b3373b](https://github.com/user-attachments/assets/5ee78974-4c48-4370-8464-9e9237c56015)  
-## 5. Cassandra
+
+## 5. Kafka Stream
+Kafka Streams was used to process the log data in real-time and produce insights such as the N most visited pages every P minutes. Below are the steps to set up and run the Kafka Streams application.
+
+1. **Install Gradle**
+Kafka Streams requires Gradle to build and manage the application.
+
+ - Install Gradle:
+     ```bash
+     sudo pacman -S gradle
+     ```   
+ - Verify Installation: Ensure Gradle is installed correctly:
+     ```bash
+     gradle -v
+     ```
+2. **Initialize the Kafka Streams Project**
+ - Navigate to the Kafka Directory:
+     ```bash
+     cd /opt/kafka
+     ```
+ - Create a Directory for the Kafka Streams Project:
+     ```bash
+     sudo mkdir /kafka_streams
+     cd /kafka_streams
+     ```
+3. **Initialize a Gradle Project**:
+     ```bash
+     sudo gradle init
+     ```
+During the initialization process, you will be prompted to select options:
+
+  - Select type of build to generate: 1 (Basic Gradle project).
+  - Select implementation language: 1 (Java).
+  - Enter target Java version: 11.
+  - Project name: kafka_streams.
+  - Select Application Structure: 1 (Single Application Project).
+  - Select Build Script DSL: 1 (Kotlin).
+  - Select Test Framework: 4 (JUnit Jupiter).
+  - Generate build using new APIs and behavior? No.
+4. **Build the Project**
+     ```bash
+     sudo gradle build
+     ```
+
+5. **Run the Kafka Streams Application**
+   To run the application, use the following command with the desired parameters (N and P):
+     ```bash
+     sudo gradle run --args="3 5"
+     ```
+- 3: The number of top visited pages (N).
+- 5: The interval in minutes (P).
+
+
+## 6. Cassandra
 ### Installation Steps
 1. **Download and Install Apache Cassandra**:
    - Visit the official [Cassandra Download Page](https://cassandra.apache.org/download/) to get the latest version.
@@ -332,7 +385,7 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
      ```bash
      source kafka-env/bin/activate
      ```
-    - Open Cassandra Query Language Shell (CQLSH):
+   - Open Cassandra Query Language Shell (CQLSH):
       ```bash
       cqlsh
       ```
@@ -341,7 +394,7 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       ```bash
       CREATE KEYSPACE logspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
       ```
-  - Use the created keyspace:
+   - Use the created keyspace:
       ```bash
       USE logspace;
       ```   
