@@ -85,9 +85,8 @@ We have provided the necessary configuration files for the Nginx load balancer a
    Ensure the load balancer distributes requests to the appropriate backend servers.
    
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/1b88f9bd-0a29-4dce-ac5e-94f65ab4d2d2" alt="Image Description">
+  <img src="https://github.com/user-attachments/assets/f18b3ca7-6126-4a50-b4af-08820ef620e1" alt="Image Description">
 </div>
-
 ---
 
 ## 2. JMeter Installation and Configuration
