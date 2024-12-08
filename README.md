@@ -336,7 +336,10 @@ Filebeat is used to ship Nginx logs to the Kafka broker.
       ```bash
       cqlsh
       ```
-
+📝 Notes:
+- Ensure Cassandra is running before interacting with cqlsh.
+- Use the above commands for initializing and verifying Cassandra in this project.
+- Modify configurations or paths according to your system setup.
 + creation of log and result table
 + executing the stream processing pythom file to cassandra through the result table
 + and the batch one show the log table
